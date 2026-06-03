@@ -50,6 +50,7 @@ copy .claude\skills\hijix-ssh-tunnel\scripts\connect.ps1 .\connect.ps1
 ```
 
 引入后项目结构：
+
 ```
 你的项目/
 ├── connect.ps1                        ← 从 skill 复制过来
@@ -69,6 +70,7 @@ copy .claude\skills\hijix-ssh-tunnel\scripts\connect.ps1 .\connect.ps1
 ### 首次初始化
 
 **1. 本地生成 SSH 密钥**
+
 ```powershell
 ssh-keygen -t rsa -b 4096 -f $HOME\.ssh\id_rsa
 type $HOME\.ssh\id_rsa.pub   # 复制输出的公钥
@@ -81,6 +83,7 @@ type $HOME\.ssh\id_rsa.pub   # 复制输出的公钥
 **3. 上传 start.sh 到虚拟机**
 
 在希冀平台网页虚拟机终端里粘贴 `start.sh` 内容并保存，或通过已有连接上传：
+
 ```bash
 scp -F .claude/skills/hijix-ssh-tunnel/assets/ssh_config \
     .claude/skills/hijix-ssh-tunnel/scripts/start.sh \
@@ -90,12 +93,14 @@ scp -F .claude/skills/hijix-ssh-tunnel/assets/ssh_config \
 ### 日常使用
 
 **虚拟机端（每次打开实验时）：**
+
 ```bash
 cd ~/Desktop && ./start.sh
 # 记下端口号，例如：bore.pub:39595
 ```
 
 **本地端：**
+
 ```powershell
 .\connect.ps1 39595
 ```
@@ -112,4 +117,4 @@ git pull
 - bore 隧道是临时的，虚拟机重启后需重新运行 `start.sh`
 - 希冀平台实验环境重置后公钥丢失，重新运行 `start.sh` 即可自动恢复
 - bore.pub 是免费公共服务，请勿传输敏感数据
-- 本仓库所有文件均不含个人敏感信息，可放心公开
+- `scripts/start.sh` 填入公钥后请勿直接提交，可将其加入 `.gitignore` 或另存为本地副本
