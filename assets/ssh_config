@@ -1,0 +1,9 @@
+Host hijix
+    HostName bore.pub
+    Port 22
+    User root
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
